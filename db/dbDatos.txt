@@ -1,0 +1,50 @@
+-- Eliminar la base de datos si ya existe
+DROP DATABASE IF EXISTS seguridad_laboral;
+
+-- Crear la base de datos
+CREATE DATABASE seguridad_laboral;
+
+-- Seleccionar la base de datos
+USE seguridad_laboral;
+
+-- Crear la tabla de datos con el campo 'id' como auto_incrementable y la fecha de actualización
+CREATE TABLE `datos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,  -- Definir el 'id' como AUTO_INCREMENT
+  `año` int(4) NOT NULL,  -- Nuevo campo 'año'
+  `mes` varchar(3) NOT NULL,
+  `cantidad_trabajadores` int(11) NOT NULL,
+  `personal_administrativo` int(11) NOT NULL,
+  `personal_operativo` int(11) NOT NULL,
+  `actos_inseguros` int(11) NOT NULL,
+  `condiciones_inseguras` int(11) NOT NULL,
+  `accidentes` int(11) NOT NULL,
+  `ac_operativas` int(11) NOT NULL,
+  `ac_administrativos` int(11) NOT NULL,
+  `otros_accidentes` int(11) NOT NULL,
+  `incidentes` int(11) NOT NULL,
+  `in_operativos` int(11) NOT NULL,
+  `in_administrativos` int(11) NOT NULL,
+  `otros_incidentes` int(11) NOT NULL,
+  `indice_severidad` decimal(5,2) NOT NULL,
+  `indice_frecuencia` decimal(5,2) NOT NULL,
+  `indice_accidentabilidad` decimal(5,2) NOT NULL,
+  `casos_covid_positivos` int(11) NOT NULL,
+  `inspecciones_programadas` int(11) NOT NULL,
+  `inspecciones_ejecutadas` int(11) NOT NULL,
+  `capacitaciones_programadas` int(11) NOT NULL,
+  `capacitaciones_ejecutadas` int(11) NOT NULL,
+  `simulacros_programados` int(11) NOT NULL,
+  `simulacros_ejecutados` int(11) NOT NULL,
+  `passt_programadas` int(11) NOT NULL,
+  `passt_ejecutadas` int(11) NOT NULL,
+  `fecha_actualizacion` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,  -- Nuevo campo de fecha y hora
+  PRIMARY KEY (`id`)  -- Establecer el 'id' como clave primaria
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Insertar datos de ejemplo para los meses de Septiembre, Octubre y Noviembre
+INSERT INTO `datos` 
+(`año`, `mes`, `cantidad_trabajadores`, `personal_administrativo`, `personal_operativo`, `actos_inseguros`, `condiciones_inseguras`, `accidentes`, `ac_operativas`, `ac_administrativos`, `otros_accidentes`, `incidentes`, `in_operativos`, `in_administrativos`, `otros_incidentes`, `indice_severidad`, `indice_frecuencia`, `indice_accidentabilidad`, `casos_covid_positivos`, `inspecciones_programadas`, `inspecciones_ejecutadas`, `capacitaciones_programadas`, `capacitaciones_ejecutadas`, `simulacros_programados`, `simulacros_ejecutados`, `passt_programadas`, `passt_ejecutadas`) 
+VALUES
+(2023, 'Sep', 101, 15, 86, 16, 69, 3, 2, 1, 0, 9, 3, 2, 4, 0.00, 48.10, 0.00, 7, 5, 5, 3, 3, 2, 2, 14, 14),
+(2023, 'Oct', 110, 20, 90, 18, 80, 4, 3, 2, 1, 10, 4, 3, 5, 0.00, 50.00, 0.00, 6, 6, 6, 4, 4, 3, 3, 15, 15),
+(2023, 'Nov', 120, 18, 102, 20, 75, 5, 4, 3, 2, 12, 5, 4, 6, 0.00, 52.00, 0.00, 8, 7, 7, 5, 5, 4, 4, 16, 16);
