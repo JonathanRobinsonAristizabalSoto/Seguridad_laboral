@@ -12,16 +12,22 @@ switch ($requestMethod) {
         } elseif ($requestUri == '/dashboard') {
             // Manejar la solicitud GET para la ruta /dashboard
             include 'dashboard.php';
+        } else {
+            // Manejar otras rutas GET
+            header('HTTP/1.1 404 Not Found');
+            echo 'Page Not Found';
         }
-        // Agrega más rutas GET según sea necesario
         break;
 
     case 'POST':
         if ($requestUri == '/actualizar') {
             // Manejar la solicitud POST para la ruta /actualizar
             include 'actualizar.php';
+        } else {
+            // Manejar otras rutas POST
+            header('HTTP/1.1 404 Not Found');
+            echo 'Page Not Found';
         }
-        // Agrega más rutas POST según sea necesario
         break;
 
     // Agrega más métodos HTTP según sea necesario
