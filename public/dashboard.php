@@ -65,8 +65,8 @@ date_default_timezone_set('America/Bogota');
         </div>
 
         <!-- Modal de confirmación -->
-        <div id="confirm-modal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
-            <div class="bg-white p-6 rounded shadow-lg text-center">
+        <div id="confirm-modal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 hidden">
+            <div class="bg-blanco p-6 rounded shadow-lg text-center w-11/12 sm:w-1/2 lg:w-1/3">
                 <h2 class="text-xl mb-4">Confirmar Importación</h2>
                 <p class="mb-4">¿Estás seguro de que deseas importar los datos?</p>
                 <form method="post" action="importar.php" enctype="multipart/form-data">
