@@ -2,7 +2,7 @@
 // obtener_datos_dashboard.php
 
 // Obtener la URL de la base de datos desde la variable de entorno
-$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+$url = parse_url(getenv("JAWSDB_URL"));
 
 $host = $url["host"];
 $username = $url["user"];
@@ -19,7 +19,7 @@ if ($mysqli->connect_error) {
 
 // Obtener los datos desde la base de datos
 $sql = "SELECT * FROM datos";
-$result = $conn->query($sql);
+$result = $mysqli->query($sql);
 
 // Arrays para almacenar los datos del gráfico
 $meses = [];
@@ -113,5 +113,5 @@ $simulacros_ejecutados = array_slice($simulacros_ejecutados, -$meses_seleccionad
 $passt_programadas = array_slice($passt_programadas, -$meses_seleccionados);
 $passt_ejecutadas = array_slice($passt_ejecutadas, -$meses_seleccionados);
 
-$conn->close();
+$mysqli->close();
 ?>
