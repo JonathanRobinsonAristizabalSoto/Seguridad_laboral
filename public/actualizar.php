@@ -1,6 +1,14 @@
 <?php
-// conexion a la base de datos
-include 'configDB.php';
+
+include('configDB.php');
+
+// Crear conexión a la base de datos
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("No se pudo conectar a la base de datos: " . $e->getMessage());
+}
 
 // Manejar solicitudes AJAX para obtener años
 if (isset($_GET['getAños'])) {

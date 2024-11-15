@@ -1,6 +1,15 @@
 <?php
-// conexion a la base de datos
-include 'configDB.php';
+// obtener_datos_dashboard.php
+
+include('configDB.php');
+
+// Crear conexión a la base de datos
+$mysqli = new mysqli($host, $username, $password, $dbname);
+
+// Verificar la conexión
+if ($mysqli->connect_error) {
+    die("Conexión fallida: " . $mysqli->connect_error);
+}
 
 // Obtener los datos desde la base de datos
 $sql = "SELECT * FROM datos";
