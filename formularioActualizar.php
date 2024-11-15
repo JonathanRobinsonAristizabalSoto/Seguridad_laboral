@@ -15,13 +15,15 @@ include('head.php');
     ?>
 
     <div class="container mx-auto p-6">
-        <div class="text-center mb-6 max-w-3xl mx-auto">
-            <h1 class="text-2xl font-bold text-rojo mb-4">Actualizacion de indicadores Seguridad Laboral</h1>
-            <p class="text-lg text-justify">Este formulario está diseñado para actualizar indicadores de la seguridad laboral mes a mes.</p>
+        <div class="text-center mb-6 max-w-xs sm:max-w-lg md:max-w-xl lg:max-w-2xl xl:max-w-3xl mx-auto">
+            <h1 class="text-2xl font-heading font-bold text-rojo mb-4">Actualización de Indicadores de Seguridad Laboral</h1>
+            <p class="text-lg font-sans text-justify">
+                Este formulario está diseñado para actualizar indicadores de la seguridad laboral mes a mes.
+            </p>
         </div>
 
-        <form action="actualizar.php" method="POST" class="bg-white p-8 rounded-lg shadow-lg border-2 border-azul space-y-4">
-            <h1 class="text-2xl text-center font-bold text-rojo mb-8">Actualiza tus datos</h1>
+        <form action="actualizar.php" method="POST" class="bg-blanco p-8 rounded-lg shadow-lg border-2 border-azul space-y-4">
+            <h1 class="text-2xl text-center font-heading font-bold text-rojo mb-8">Actualiza tus datos</h1>
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
                 <!-- Campo: Año -->
                 <div class="flex flex-col">
@@ -248,7 +250,7 @@ include('head.php');
 
             <!-- Botón de Enviar -->
             <div class="flex justify-center mt-6">
-                <button type="submit" class="bg-azul text-white py-2 px-6 rounded-md hover:bg-gris-oscuro focus:outline-none">Guardar Datos</button>
+                <button type="submit" class="bg-azul text-blanco py-2 px-6 rounded-md hover:bg-gris-oscuro focus:outline-none">Guardar Datos</button>
             </div>
         </form>
     </div>

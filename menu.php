@@ -1,6 +1,6 @@
 <!-- menu.php -->
 
-<header class=" text-azul py-4 px-6 flex justify-between items-center">
+<header class="text-azul py-4 px-6 flex justify-between items-center">
     <!-- Logo a la izquierda -->
     <div class="flex items-center">
         <img src="./assets/img/logo.png" alt="Logo" class="h-8 w-8 mr-2">
@@ -8,7 +8,7 @@
 
     <!-- Título centrado -->
     <div class="flex-grow text-center">
-        <h1 class="text-2xl font-semibold">SEGURIDAD LABORAL</h1>
+        <h1 class="text-xl font-heading font-bold">SEGURIDAD LABORAL</h1>
     </div>
 
     <!-- Menú hamburguesa a la derecha -->
@@ -23,17 +23,17 @@
 <div id="sidebar" class="fixed inset-0 bg-gris-oscuro bg-opacity-75 z-50 hidden">
     <div class="w-64 bg-rojo h-full p-6 transform -translate-x-full transition-transform duration-500 ease-in-out" id="sidebar-content">
         <div class="flex justify-between items-center mb-8">
-            <span class="text-xl font-semibold text-azul">Menú</span>
+            <span class="text-xl font-heading font-bold text-azul">Menú</span>
             <!-- Ícono para cerrar el sidebar -->
             <button id="close-sidebar" class="text-blanco text-2xl focus:outline-none">
                 <i class="fas fa-times"></i>
             </button>
         </div>
         <ul>
-            <li><a href="./index.php" class="text-lg text-blanco hover:text-verde-oscuro mb-4 block">Inicio</a></li>
-            <li><a href="./formulario.php" class="text-lg text-blanco hover:text-verde-oscuro mb-4 block">Crear Indicadores</a></li>
-            <li><a href="./formularioActualizar.php" class="text-lg text-blanco hover:text-verde-oscuro mb-4 block">Actualizar Indicadores</a></li>
-            <li><a href="./dashboard.php" class="text-lg text-blanco hover:text-verde-oscuro mb-4 block">Dashboard</a></li>
+            <li><a href="./index.php" class="text-lg font-medium text-blanco hover:text-azul mb-4 block font-sans">Inicio</a></li>
+            <li><a href="./formulario.php" class="text-lg font-medium text-blanco hover:text-azul mb-4 block font-sans">Crear Indicadores</a></li>
+            <li><a href="./formularioActualizar.php" class="text-lg font-medium text-blanco hover:text-azul mb-4 block font-sans">Actualizar Indicadores</a></li>
+            <li><a href="./dashboard.php" class="text-lg font-medium text-blanco hover:text-azul mb-4 block font-sans">Dashboard</a></li>
         </ul>
     </div>
 </div>

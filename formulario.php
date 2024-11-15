@@ -12,9 +12,9 @@ include('head.php');
     <?php
     // Incluir la lógica de consulta desde insertar.php
     include('insertar.php');
-    
 
-// Obtener el mes actual
+
+    // Obtener el mes actual
     $mes_actual = date('F');
     $meses = [
         'Enero' => 'January',
@@ -33,15 +33,15 @@ include('head.php');
     ?>
 
     <div class="container mx-auto p-6">
-        <div class="text-center mb-6 max-w-3xl mx-auto">
-            <h1 class="text-2xl font-bold text-rojo mb-4">Crear Indicadores de Seguridad Laboral</h1>
-            <p class="text-lg text-justify">
-                Crea nuevos indicadores para medir y monitorear aspectos clave de la seguridad laboral, como incidentes, condiciones inseguras y cumplimiento de normativas. Estos indicadores ayudarán a mejorar la seguridad en el lugar de trabajo.
+        <div class="text-center mb-6 max-w-xs sm:max-w-lg md:max-w-xl lg:max-w-2xl xl:max-w-3xl mx-auto">
+            <h1 class="text-2xl font-heading font-semibold text-rojo mb-4">Crear Indicadores de Seguridad Laboral</h1>
+            <p class="text-lg font-sans text-justify">
+                Crea indicadores mensuales para medir y monitorear la seguridad laboral, incluyendo incidentes y condiciones inseguras.
             </p>
         </div>
 
-        <form action="insertar.php" method="POST" class="bg-white p-8 rounded-lg shadow-lg border-2 border-azul space-y-4">
-            <h1 class="text-2xl text-center font-bold text-rojo mb-8">Agrega nuevos datos</h1>
+        <form action="insertar.php" method="POST" class="bg-blanco p-8 rounded-lg shadow-lg border-2 border-azul space-y-4">
+            <h1 class="text-2xl text-center font-heading font-bold text-rojo mb-8">Agrega nuevos datos</h1>
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
                 <!-- Campo: Año -->
                 <div class="flex flex-col">
@@ -269,7 +269,7 @@ include('head.php');
 
             <!-- Botón de Enviar -->
             <div class="flex justify-center mt-6">
-                <button type="submit" class="bg-azul text-white py-2 px-6 rounded-md hover:bg-gris-oscuro focus:outline-none">Guardar Datos</button>
+                <button type="submit" class="bg-azul text-blanco py-2 px-6 rounded-md hover:bg-gris-oscuro focus:outline-none">Guardar Datos</button>
             </div>
         </form>
     </div>
