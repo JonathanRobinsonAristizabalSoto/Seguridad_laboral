@@ -1,3 +1,5 @@
+// composer.json
+
 {
     "name": "jras/seguridad-laboral",
     "description": "Sistema de gestión de seguridad laboral",
