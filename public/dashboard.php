@@ -31,21 +31,33 @@ include 'obtener_datos_dashboard.php';
         <!-- botones filtro meses para las graficas -->
         <div class="text-center mb-8">
             <form method="post" action="dashboard.php" class="grid grid-cols-2 gap-4 sm:flex sm:flex-wrap sm:justify-center">
-                <button type="submit" name="meses" value="1" class="<?php echo (isset($_POST['meses']) && $_POST['meses'] == '1') ? 'bg-rojo' : 'bg-azul'; ?> text-blanco py-2 px-4 rounded w-full sm:w-auto">Último Mes</button>
-                <button type="submit" name="meses" value="3" class="<?php echo (isset($_POST['meses']) && $_POST['meses'] == '3') ? 'bg-rojo' : 'bg-azul'; ?> text-blanco py-2 px-4 rounded w-full sm:w-auto">Últimos 3 Meses</button>
-                <button type="submit" name="meses" value="6" class="<?php echo (isset($_POST['meses']) && $_POST['meses'] == '6') ? 'bg-rojo' : 'bg-azul'; ?> text-blanco py-2 px-4 rounded w-full sm:w-auto">Últimos 6 Meses</button>
-                <button type="submit" name="meses" value="12" class="<?php echo (isset($_POST['meses']) && $_POST['meses'] == '12') ? 'bg-rojo' : 'bg-azul'; ?> text-blanco py-2 px-4 rounded w-full sm:w-auto">Últimos 12 Meses</button>
+                <button type="submit" name="meses" value="1" class="<?php echo (isset($_POST['meses']) && $_POST['meses'] == '1') ? 'bg-rojo' : 'bg-azul'; ?> text-blanco py-2 px-4 rounded w-full sm:w-auto">
+                    <i class="fas fa-calendar-alt mr-2"></i>Último Mes
+                </button>
+                <button type="submit" name="meses" value="3" class="<?php echo (isset($_POST['meses']) && $_POST['meses'] == '3') ? 'bg-rojo' : 'bg-azul'; ?> text-blanco py-2 px-4 rounded w-full sm:w-auto">
+                    <i class="fas fa-calendar-alt mr-2"></i>Últimos 3 Meses
+                </button>
+                <button type="submit" name="meses" value="6" class="<?php echo (isset($_POST['meses']) && $_POST['meses'] == '6') ? 'bg-rojo' : 'bg-azul'; ?> text-blanco py-2 px-4 rounded w-full sm:w-auto">
+                    <i class="fas fa-calendar-alt mr-2"></i>Últimos 6 Meses
+                </button>
+                <button type="submit" name="meses" value="12" class="<?php echo (isset($_POST['meses']) && $_POST['meses'] == '12') ? 'bg-rojo' : 'bg-azul'; ?> text-blanco py-2 px-4 rounded w-full sm:w-auto">
+                    <i class="fas fa-calendar-alt mr-2"></i>Últimos 12 Meses
+                </button>
             </form>
         </div>
 
         <!-- Botones de exportar e importar -->
         <div class="text-center mb-8">
             <form method="post" action="exportar.php" class="inline-block">
-                <button type="submit" class="bg-verde text-blanco py-2 px-4 rounded w-full sm:w-auto">Exportar Datos a Excel</button>
+                <button type="submit" class="bg-verde text-blanco py-2 px-4 rounded w-full sm:w-auto">
+                    <i class="fas fa-file-export mr-2"></i>Exportar Datos a Excel
+                </button>
             </form>
             <form method="post" action="importar.php" enctype="multipart/form-data" class="inline-block">
                 <input type="file" name="file" class="mb-2">
-                <button type="submit" class="bg-amarillo text-blanco py-2 px-4 rounded w-full sm:w-auto">Importar Datos desde Excel</button>
+                <button type="submit" class="bg-amarillo text-blanco py-2 px-4 rounded w-full sm:w-auto">
+                    <i class="fas fa-file-import mr-2"></i>Importar Datos desde Excel
+                </button>
             </form>
         </div>
 
