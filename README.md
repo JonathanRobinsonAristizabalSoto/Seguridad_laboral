@@ -2,14 +2,9 @@ estructura de el proyecto
 
 Seguridad_laboral/
 ├── public/
-│   ├── assets/
-│   │   ├── css/
-│   │   │   └── styles.css
-│   │   ├── js/
-│   │   │   └── scripts.js
-│   │   └── img/
-│   │       └── logo.png
+│   ├── .htaccess
 │   ├── index.php
+│   ├── home.php
 │   ├── actualizar.php
 │   ├── dashboard.php
 │   ├── formulario.php
@@ -19,6 +14,13 @@ Seguridad_laboral/
 │   ├── head.php
 │   ├── menu.php
 │   ├── footer.php
+│   ├── assets/
+│   │   ├── css/
+│   │   │   └── styles.css
+│   │   ├── js/
+│   │   │   └── scripts.js
+│   │   └── img/
+│   │       └── logo.png
 ├── db/
 │   └── (archivos relacionados con la base de datos)
 ├── node_modules/
