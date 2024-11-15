@@ -1,0 +1,18 @@
+{
+    "name": "jras/seguridad-laboral",
+    "description": "Sistema de gestión de seguridad laboral",
+    "license": "ISC",
+    "autoload": {
+        "psr-4": {
+            "Jras\\SeguridadLaboral\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "JonathanRobinsonAristizabalSoto",
+            "email": "jonathan_aristizabal@soy.sena.edu.co"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
