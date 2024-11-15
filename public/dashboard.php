@@ -38,6 +38,17 @@ include 'obtener_datos_dashboard.php';
             </form>
         </div>
 
+        <!-- Botones de exportar e importar -->
+        <div class="text-center mb-8">
+            <form method="post" action="exportar.php" class="inline-block">
+                <button type="submit" class="bg-verde text-blanco py-2 px-4 rounded w-full sm:w-auto">Exportar Datos a Excel</button>
+            </form>
+            <form method="post" action="importar.php" enctype="multipart/form-data" class="inline-block">
+                <input type="file" name="file" class="mb-2">
+                <button type="submit" class="bg-amarillo text-blanco py-2 px-4 rounded w-full sm:w-auto">Importar Datos desde Excel</button>
+            </form>
+        </div>
+
         <!-- Mostrar la fecha y hora de actualización -->
         <div class="text-center mb-8">
             <div class="flex justify-center items-center mb-2">
