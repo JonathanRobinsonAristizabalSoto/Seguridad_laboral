@@ -1,2 +1,14 @@
-
+# Ignorar la carpeta vendor
 /vendor/
+
+# Ignorar la carpeta db
+/db/
+
+# Ignorar la carpeta node_modules (si estás usando Node.js)
+node_modules/
+
+# Ignorar archivos de entorno
+.env
+
+# Ignorar archivos de configuración específicos
+/configDB.php
