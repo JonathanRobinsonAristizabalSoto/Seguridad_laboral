@@ -61,19 +61,33 @@ date_default_timezone_set('America/Bogota');
                     <i class="fas fa-file-import mr-2"></i>Importar Datos
                 </label>
                 <input id="file-upload" type="file" name="file" class="hidden">
-                <button type="submit" id="confirm-button" class="bg-azul text-blanco py-2 px-4 rounded w-full sm:w-auto mt-2 text-center" style="display: none;">
-                    Confirmar
-                </button>
             </form>
         </div>
 
+        <!-- Modal de confirmación -->
+        <div id="confirm-modal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+            <div class="bg-white p-6 rounded shadow-lg text-center">
+                <h2 class="text-xl mb-4">Confirmar Importación</h2>
+                <p class="mb-4">¿Estás seguro de que deseas importar los datos?</p>
+                <form method="post" action="importar.php" enctype="multipart/form-data">
+                    <input type="hidden" id="file-hidden" name="file">
+                    <button type="submit" class="bg-azul text-blanco py-2 px-4 rounded mr-2">Confirmar</button>
+                    <button type="button" class="bg-rojo text-blanco py-2 px-4 rounded" onclick="document.getElementById('confirm-modal').style.display = 'none';">Cancelar</button>
+                </form>
+            </div>
+        </div>
+
         <script>
-            // Mostrar el botón de confirmación solo cuando se haya seleccionado un archivo
+            // Mostrar el modal de confirmación solo cuando se haya seleccionado un archivo
             document.getElementById('file-upload').addEventListener('change', function() {
                 if (this.files.length > 0) {
-                    document.getElementById('confirm-button').style.display = 'inline-block';
-                } else {
-                    document.getElementById('confirm-button').style.display = 'none';
+                    const file = this.files[0];
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.getElementById('file-hidden').value = e.target.result;
+                        document.getElementById('confirm-modal').style.display = 'flex';
+                    };
+                    reader.readAsDataURL(file);
                 }
             });
         </script>
