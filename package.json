@@ -4,8 +4,8 @@
   "description": "Sistema de gestión de seguridad laboral",
   "main": "index.js",
   "scripts": {
-    "dev": "npx tailwindcss -i ./assets/css/tailwind.css -o ./assets/css/styles.css --watch",
-    "build": "cross-env NODE_ENV=production npx tailwindcss -i ./assets/css/tailwind.css -o ./assets/css/styles.css --minify"
+    "dev": "npx tailwindcss -i ./public/assets/css/tailwind.css -o ./public/assets/css/styles.css --watch",
+    "build": "cross-env NODE_ENV=production npx tailwindcss -i ./public/assets/css/tailwind.css -o ./public/assets/css/styles.css --minify"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",

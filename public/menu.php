@@ -30,7 +30,7 @@
             </button>
         </div>
         <ul>
-            <li><a href="./index.php" class="text-lg font-medium text-blanco hover:text-azul mb-4 block font-sans">Inicio</a></li>
+            <li><a href="./home.php" class="text-lg font-medium text-blanco hover:text-azul mb-4 block font-sans">Inicio</a></li>
             <li><a href="./formulario.php" class="text-lg font-medium text-blanco hover:text-azul mb-4 block font-sans">Crear Indicadores</a></li>
             <li><a href="./formularioActualizar.php" class="text-lg font-medium text-blanco hover:text-azul mb-4 block font-sans">Actualizar Indicadores</a></li>
             <li><a href="./dashboard.php" class="text-lg font-medium text-blanco hover:text-azul mb-4 block font-sans">Dashboard</a></li>
