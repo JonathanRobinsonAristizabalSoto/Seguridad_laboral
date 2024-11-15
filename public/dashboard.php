@@ -525,6 +525,16 @@ date_default_timezone_set('America/Bogota');
             }
         });
     </script>
+    <script>
+        // Mostrar el botón de confirmación solo cuando se haya seleccionado un archivo
+        document.getElementById('file-upload').addEventListener('change', function() {
+            if (this.files.length > 0) {
+                document.getElementById('confirm-button').style.display = 'inline-block';
+            } else {
+                document.getElementById('confirm-button').style.display = 'none';
+            }
+        });
+    </script>
 </body>
 
 </html>
