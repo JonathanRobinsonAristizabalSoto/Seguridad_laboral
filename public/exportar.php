@@ -91,7 +91,7 @@ $writer = new Xlsx($spreadsheet);
 $filename = 'datos_seguridad_laboral.xlsx';
 $writer->save($filename);
 
-// Descargar el archivo
+// Descargar el archivo excel
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
 header('Content-Disposition: attachment; filename="' . $filename . '"');
 header('Content-Length: ' . filesize($filename));
