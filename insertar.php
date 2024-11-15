@@ -16,6 +16,7 @@ try {
 // Comprobar si los datos fueron enviados a través del formulario
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Obtener los valores del formulario
+    $anio = $_POST['anio'];
     $mes = $_POST['mes'];
     $cantidad_trabajadores = $_POST['cantidad_trabajadores'];
     $personal_administrativo = $_POST['personal_administrativo'];
@@ -45,6 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Preparar la consulta SQL para insertar los datos
     $sql = "INSERT INTO datos (
+                anio,
                 mes,
                 cantidad_trabajadores,
                 personal_administrativo,
@@ -72,6 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 passt_programadas,
                 passt_ejecutadas
             ) VALUES (
+                :anio,
                 :mes,
                 :cantidad_trabajadores,
                 :personal_administrativo,
@@ -106,6 +109,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Ejecutar la consulta con los datos del formulario
     try {
         $stmt->execute([
+            ':anio' => $anio,
             ':mes' => $mes,
             ':cantidad_trabajadores' => $cantidad_trabajadores,
             ':personal_administrativo' => $personal_administrativo,
@@ -142,8 +146,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 // Obtener los datos existentes de la base de datos
-$sql = "SELECT * FROM datos ORDER BY id DESC LIMIT 1";
+// Obtener los datos del último mes
+$sql = "SELECT * FROM datos ORDER BY anio DESC, mes DESC LIMIT 1";
 $stmt = $pdo->query($sql);
 $datos = $stmt->fetch(PDO::FETCH_ASSOC);
-
 ?>

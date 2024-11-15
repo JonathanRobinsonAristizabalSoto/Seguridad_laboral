@@ -25,7 +25,7 @@
     <!-- Contenido Principal -->
     <main class="p-6 flex justify-center items-center mt-8 flex-grow">
         <!-- Contenedor centralizado -->
-        <div class="max-w-4xl w-full bg-white p-10 rounded-lg shadow-lg">
+        <div class="max-w-4xl w-full bg-white p-8 rounded-lg shadow-lg">
             <h2 class="text-2xl font-semibold text-azul mb-6 text-center">Bienvenido al sistema de gestión de Seguridad Laboral</h2>
             <p class="text-lg text-gris-oscuro mb-6 text-center">Este es un sistema para el registro y análisis de datos relacionados con la seguridad laboral. Aquí podrás ingresar información y consultar estadísticas en tiempo real.</p>
             <div class="flex justify-center">

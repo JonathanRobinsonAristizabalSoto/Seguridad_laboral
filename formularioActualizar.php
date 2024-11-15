@@ -1,5 +1,8 @@
-<!-- Incluir el head -->
-<?php include('head.php'); ?>
+<!-- head -->
+<?php
+// Incluir la lógica de consulta desde head.php
+include('head.php');
+?>
 
 <body class="bg-blanco">
 
@@ -7,7 +10,7 @@
     <?php include('menu.php'); ?>
 
     <?php
-    // Incluir la lógica de para actualizar desde actualizar.php
+    // Incluir la lógica de consulta desde actualizar.php
     include('actualizar.php');
     ?>
 
@@ -17,16 +20,17 @@
             <p class="text-lg text-justify">Este formulario está diseñado para actualizar indicadores de la seguridad laboral mes a mes.</p>
         </div>
 
-        <form action="insertar.php" method="POST" class="bg-white p-8 rounded-lg shadow-lg border-2 border-azul space-y-4">
-            <h1 class="text-2xl text-center font-bold text-rojo mb-8">Database</h1>
+        <form action="actualizar.php" method="POST" class="bg-white p-8 rounded-lg shadow-lg border-2 border-azul space-y-4">
+            <h1 class="text-2xl text-center font-bold text-rojo mb-8">Actualiza tus datos</h1>
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
                 <!-- Campo: Año -->
                 <div class="flex flex-col">
-                    <label for="año" class="font-semibold text-azul flex items-center">
-                        <i class="fas fa-calendar-alt text-rojo mr-2"></i> Año
+                    <label for="anio" class="font-semibold text-azul flex items-center">
+                        <i class="fas fa-calendar text-rojo mr-2"></i> Año
                     </label>
-                    <select name="año" id="año" class="p-2 border border-gray-300 rounded-md" required>
-                        <!-- Opciones de año se cargarán dinámicamente -->
+                    <select name="anio" id="anio" class="p-2 border border-gray-300 rounded-md" required>
+                        <option value="" disabled selected>Seleccione el año</option>
+                        <!-- Opciones de años se cargarán dinámicamente -->
                     </select>
                 </div>
 
@@ -36,7 +40,8 @@
                         <i class="fas fa-calendar-alt text-rojo mr-2"></i> Mes
                     </label>
                     <select name="mes" id="mes" class="p-2 border border-gray-300 rounded-md" required>
-                        <!-- Opciones de mes se cargarán dinámicamente -->
+                        <option value="" disabled selected>Seleccione el mes</option>
+                        <!-- Opciones de meses se cargarán dinámicamente -->
                     </select>
                 </div>
 
@@ -248,15 +253,54 @@
         </form>
     </div>
 
+    <!-- Footer -->
     <?php
-    // footer.php
+    // Incluir la lógica de consulta desde footer.php
     include('footer.php');
     ?>
 
-    <!-- Incluir jQuery -->
+    <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- Incluir el archivo de validación -->
-    <script src="./assets/js/validacionFormulario.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Cargar años disponibles
+            $.get('actualizar.php?getAños', function(data) {
+                const años = JSON.parse(data);
+                const añoSelect = $('#anio');
+                años.forEach(año => {
+                    añoSelect.append(new Option(año.anio, año.anio));
+                });
+            });
+
+            // Cargar meses cuando se selecciona un año
+            $('#anio').on('change', function() {
+                const año = $(this).val();
+                $.get('actualizar.php?getMeses&anio=' + año, function(data) {
+                    const meses = JSON.parse(data);
+                    const mesSelect = $('#mes');
+                    mesSelect.empty();
+                    mesSelect.append(new Option('Seleccione un mes', '')); // Añadir opción por defecto
+                    meses.forEach(mes => {
+                        mesSelect.append(new Option(mes.mes, mes.mes));
+                    });
+                });
+            });
+
+            // Cargar datos cuando se selecciona un mes
+            $('#mes').on('change', function() {
+                const año = $('#anio').val();
+                const mes = $(this).val();
+                $.get('actualizar.php?getDatos&anio=' + año + '&mes=' + mes, function(data) {
+                    const datos = JSON.parse(data);
+                    for (const key in datos) {
+                        if (datos.hasOwnProperty(key) && key !== 'anio' && key !== 'mes') {
+                            $('#' + key).val(datos[key]);
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
