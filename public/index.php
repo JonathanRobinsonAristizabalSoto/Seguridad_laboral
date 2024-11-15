@@ -8,7 +8,7 @@ switch ($requestMethod) {
     case 'GET':
         if ($requestUri == '/') {
             // Manejar la solicitud GET para la ruta raíz
-            include 'home.php'; // Cambia 'home.php' por el contenido de tu página principal
+            include 'home.php';
         } elseif ($requestUri == '/dashboard') {
             // Manejar la solicitud GET para la ruta /dashboard
             include 'dashboard.php';
