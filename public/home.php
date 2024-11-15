@@ -16,7 +16,7 @@
             <h2 class="text-2xl font-heading font-semibold text-azul mb-6 text-center">Bienvenido al sistema de gestión de Seguridad Laboral</h2>
             <p class="text-lg text-gris-oscuro mb-6 text-center">Este es un sistema para el registro y análisis de datos relacionados con la seguridad laboral. Aquí podrás ingresar información y consultar estadísticas en tiempo real para la toma de decisiones.</p>
             <div class="flex justify-center">
-                <a href="./dashboard.php" class="bg-rojo text-blanco px-8 py-4 rounded-full text-xl hover:bg-gris-oscuro transition duration-300">
+                <a href="/dashboard.php" class="bg-rojo text-blanco px-8 py-4 rounded-full text-xl hover:bg-gris-oscuro transition duration-300">
                     Ir al Dashboard
                 </a>
             </div>
