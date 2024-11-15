@@ -49,15 +49,16 @@ include 'obtener_datos_dashboard.php';
         <!-- Botones de exportar e importar -->
         <div class="text-center mb-8">
             <form method="post" action="exportar.php" class="inline-block">
-                <button type="submit" class="bg-verde text-blanco py-2 px-4 rounded w-full sm:w-auto">
-                    <i class="fas fa-file-export mr-2"></i>Exportar Datos a Excel
+                <button type="submit" class="bg-azul text-blanco py-2 px-4 rounded-full w-12 h-12 flex items-center justify-center">
+                    <i class="fas fa-file-export"></i>
                 </button>
             </form>
             <form method="post" action="importar.php" enctype="multipart/form-data" class="inline-block">
-                <input type="file" name="file" class="mb-2">
-                <button type="submit" class="bg-amarillo text-blanco py-2 px-4 rounded w-full sm:w-auto">
-                    <i class="fas fa-file-import mr-2"></i>Importar Datos desde Excel
-                </button>
+                <label for="file-upload" class="bg-azul text-blanco py-2 px-4 rounded-full w-12 h-12 flex items-center justify-center cursor-pointer">
+                    <i class="fas fa-file-import"></i>
+                </label>
+                <input id="file-upload" type="file" name="file" class="hidden">
+                <button type="submit" class="hidden"></button>
             </form>
         </div>
 
