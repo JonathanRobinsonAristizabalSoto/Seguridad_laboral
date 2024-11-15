@@ -58,7 +58,7 @@ include 'obtener_datos_dashboard.php';
                     <i class="fas fa-file-import"></i>
                 </label>
                 <input id="file-upload" type="file" name="file" class="hidden">
-                <button type="submit" class="hidden"></button>
+                <button type="submit" class="hidden" id="upload-button"></button>
             </form>
         </div>
 
