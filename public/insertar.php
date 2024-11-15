@@ -1,17 +1,6 @@
 <?php
-// Configuración de la base de datos
-$host = 'localhost'; // O la dirección del servidor MySQL
-$dbname = 'seguridad_laboral'; // Nombre de la base de datos
-$username = 'root'; // Nombre de usuario de MySQL
-$password = ''; // Contraseña de MySQL, dejar vacío si no tienes
-
-// Crear conexión a la base de datos
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("No se pudo conectar a la base de datos: " . $e->getMessage());
-}
+// conexion a la base de datos
+include 'configDB.php';
 
 // Comprobar si los datos fueron enviados a través del formulario
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

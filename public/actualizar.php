@@ -1,17 +1,6 @@
 <?php
-// Configuración de la base de datos
-$host = 'localhost';
-$dbname = 'seguridad_laboral';
-$username = 'root';
-$password = '';
-
-// Crear conexión a la base de datos
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("No se pudo conectar a la base de datos: " . $e->getMessage());
-}
+// conexion a la base de datos
+include 'configDB.php';
 
 // Manejar solicitudes AJAX para obtener años
 if (isset($_GET['getAños'])) {
