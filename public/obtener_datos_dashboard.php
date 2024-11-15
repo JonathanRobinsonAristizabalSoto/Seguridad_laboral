@@ -1,19 +1,20 @@
 <?php
 // obtener_datos_dashboard.php
-// Ruta: /public/obtener_datos_dashboard.php
 
-// Configuración de la base de datos
-$host = 'localhost';  // Cambia esto si tu base de datos está en otro servidor
-$dbname = 'seguridad_laboral';
-$username = 'root';  // Cambia a tu usuario de base de datos
-$password = '';  // Cambia a tu contraseña de base de datos
+// Obtener la URL de la base de datos desde la variable de entorno
+$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
-// Crear la conexión
-$conn = new mysqli($host, $username, $password, $dbname);
+$host = $url["host"];
+$username = $url["user"];
+$password = $url["pass"];
+$dbname = substr($url["path"], 1);
 
-// Verificar si la conexión fue exitosa
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
+// Crear conexión a la base de datos
+$mysqli = new mysqli($host, $username, $password, $dbname);
+
+// Verificar la conexión
+if ($mysqli->connect_error) {
+    die("Conexión fallida: " . $mysqli->connect_error);
 }
 
 // Obtener los datos desde la base de datos
