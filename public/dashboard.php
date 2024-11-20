@@ -29,7 +29,7 @@ date_default_timezone_set('America/Bogota');
 
     <!-- Contenido principal -->
     <div class="container mx-auto p-6">
-        <h1 class="text-2xl font-heading font-bold text-center text-rojo mb-8">REPORTE DE SEGURIDAD Y SALUD EN EL TRABAJO</h1>
+        <h1 class="text-2xl font-heading font-bold text-center text-rojo mb-8">REPORTES DE SEGURIDAD Y SALUD EN EL TRABAJO</h1>
 
         <!-- botones filtro meses para las graficas -->
         <div class="text-center mb-8">
