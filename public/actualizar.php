@@ -10,6 +10,22 @@ try {
     die("No se pudo conectar a la base de datos: " . $e->getMessage());
 }
 
+// Array para mapear los meses
+$mesesMap = [
+    1 => 'Enero',
+    2 => 'Febrero',
+    3 => 'Marzo',
+    4 => 'Abril',
+    5 => 'Mayo',
+    6 => 'Junio',
+    7 => 'Julio',
+    8 => 'Agosto',
+    9 => 'Septiembre',
+    10 => 'Octubre',
+    11 => 'Noviembre',
+    12 => 'Diciembre'
+];
+
 // Manejar solicitudes AJAX para obtener años
 if (isset($_GET['getAños'])) {
     $stmt = $pdo->query("SELECT DISTINCT anio FROM datos ORDER BY anio DESC");
@@ -24,6 +40,12 @@ if (isset($_GET['getMeses']) && isset($_GET['anio'])) {
     $stmt = $pdo->prepare("SELECT DISTINCT mes FROM datos WHERE anio = :anio ORDER BY mes DESC");
     $stmt->execute(['anio' => $anio]);
     $meses = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Convertir los meses a sus nombres completos
+    foreach ($meses as &$mes) {
+        $mes['mes'] = $mesesMap[$mes['mes']];
+    }
+
     echo json_encode($meses);
     exit();
 }
@@ -31,7 +53,7 @@ if (isset($_GET['getMeses']) && isset($_GET['anio'])) {
 // Manejar solicitudes AJAX para obtener datos
 if (isset($_GET['getDatos']) && isset($_GET['anio']) && isset($_GET['mes'])) {
     $anio = $_GET['anio'];
-    $mes = $_GET['mes'];
+    $mes = array_search($_GET['mes'], $mesesMap); // Convertir el nombre del mes a su valor numérico
     $stmt = $pdo->prepare("SELECT * FROM datos WHERE anio = :anio AND mes = :mes");
     $stmt->execute(['anio' => $anio, 'mes' => $mes]);
     $datos = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -43,7 +65,7 @@ if (isset($_GET['getDatos']) && isset($_GET['anio']) && isset($_GET['mes'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Obtener los valores del formulario
     $anio = $_POST['anio'];
-    $mes = $_POST['mes'];
+    $mes = array_search($_POST['mes'], $mesesMap); // Convertir el nombre del mes a su valor numérico
     $cantidad_trabajadores = $_POST['cantidad_trabajadores'];
     $personal_administrativo = $_POST['personal_administrativo'];
     $personal_operativo = $_POST['personal_operativo'];
@@ -234,7 +256,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         $stmt->execute($params);
         // Redirigir al dashboard después de insertar los datos
-        header("Location: dashboard.php?update_success=1&anio=$anio&mes=$mes");
+        header("Location: dashboard.php?update_success=1&anio=$anio&mes=" . $mesesMap[$mes]);
         exit();
     } catch (PDOException $e) {
         echo "<p class='text-red-600 text-center'>Error al insertar los datos: " . $e->getMessage() . "</p>";
