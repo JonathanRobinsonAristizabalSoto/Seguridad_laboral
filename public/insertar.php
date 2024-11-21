@@ -135,7 +135,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ':passt_ejecutadas' => $passt_ejecutadas
         ]);
         // Redirigir al dashboard después de insertar los datos
-        header("Location: dashboard.php");
+        header("Location: dashboard.php?create_success=1&anio=$anio&mes=$mes");
         exit();
     } catch (PDOException $e) {
         echo "<p class='text-red-600 text-center'>Error al insertar los datos: " . $e->getMessage() . "</p>";
