@@ -77,6 +77,24 @@ date_default_timezone_set('America/Bogota');
             </div>
         </div>
 
+        <!-- Modal de éxito de exportación -->
+        <div id="export-success-modal" class="fixed inset-0 flex items-center justify-center bg-negro bg-opacity-75 hidden">
+            <div class="bg-blanco p-6 rounded shadow-lg text-center w-11/12 sm:w-1/2 lg:w-1/3">
+                <h2 class="text-xl mb-4">Exportación Exitosa</h2>
+                <p class="mb-4">La base de datos se ha exportado con éxito.</p>
+                <button type="button" class="bg-azul text-blanco py-2 px-4 rounded" onclick="document.getElementById('export-success-modal').style.display = 'none';">Cerrar</button>
+            </div>
+        </div>
+
+        <!-- Modal de éxito de importación -->
+        <div id="import-success-modal" class="fixed inset-0 flex items-center justify-center bg-negro bg-opacity-75 hidden">
+            <div class="bg-blanco p-6 rounded shadow-lg text-center w-11/12 sm:w-1/2 lg:w-1/3">
+                <h2 class="text-xl mb-4">Importación Exitosa</h2>
+                <p class="mb-4">Los datos se han importado con éxito.</p>
+                <button type="button" class="bg-azul text-blanco py-2 px-4 rounded" onclick="document.getElementById('import-success-modal').style.display = 'none';">Cerrar</button>
+            </div>
+        </div>
+
         <script>
             // Mostrar el modal de confirmación solo cuando se haya seleccionado un archivo
             document.getElementById('file-upload').addEventListener('change', function() {
@@ -89,6 +107,16 @@ date_default_timezone_set('America/Bogota');
             document.getElementById('confirm-button').addEventListener('click', function() {
                 document.getElementById('import-form').submit();
             });
+
+            // Mostrar el modal de éxito de exportación si se ha exportado correctamente
+            <?php if (isset($_GET['export_success']) && $_GET['export_success'] == 1): ?>
+                document.getElementById('export-success-modal').style.display = 'flex';
+            <?php endif; ?>
+
+            // Mostrar el modal de éxito de importación si se ha importado correctamente
+            <?php if (isset($_GET['import_success']) && $_GET['import_success'] == 1): ?>
+                document.getElementById('import-success-modal').style.display = 'flex';
+            <?php endif; ?>
         </script>
 
         <!-- Mostrar la fecha y hora de actualización -->
