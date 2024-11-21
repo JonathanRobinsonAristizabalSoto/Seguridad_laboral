@@ -51,16 +51,16 @@ date_default_timezone_set('America/Bogota');
 
         <!-- Botones de exportar e importar -->
         <div class="text-center mb-8">
-            <form method="post" action="exportar.php" class="inline-block">
-                <button type="submit" class="bg-rojo text-blanco py-2 px-4 rounded w-full sm:w-auto text-center hover:bg-gris-oscuro">
-                    <i class="fas fa-file-export mr-2"></i>Exportar Datos
-                </button>
-            </form>
-            <form method="post" action="importar.php" enctype="multipart/form-data" class="inline-block">
+            <form id="import-form" method="post" action="importar.php" enctype="multipart/form-data" class="inline-block">
                 <label for="file-upload" class="bg-rojo text-blanco py-2 px-4 rounded w-full sm:w-auto cursor-pointer text-center block hover:bg-gris-oscuro">
                     <i class="fas fa-file-import mr-2"></i>Importar Datos
                 </label>
                 <input id="file-upload" type="file" name="file" class="hidden">
+            </form>
+            <form method="post" action="exportar.php" class="inline-block">
+                <button type="submit" class="bg-rojo text-blanco py-2 px-4 rounded w-full sm:w-auto text-center hover:bg-gris-oscuro">
+                    <i class="fas fa-file-export mr-2"></i>Exportar Datos
+                </button>
             </form>
         </div>
 
@@ -69,11 +69,8 @@ date_default_timezone_set('America/Bogota');
             <div class="bg-blanco p-6 rounded shadow-lg text-center w-11/12 sm:w-1/2 lg:w-1/3">
                 <h2 class="text-xl mb-4">Confirmar Importación</h2>
                 <p class="mb-4">¿Estás seguro de que deseas importar los datos?</p>
-                <form method="post" action="importar.php" enctype="multipart/form-data">
-                    <input type="hidden" id="file-hidden" name="file">
-                    <button type="submit" class="bg-azul text-blanco py-2 px-4 rounded mr-2">Confirmar</button>
-                    <button type="button" class="bg-rojo text-blanco py-2 px-4 rounded" onclick="document.getElementById('confirm-modal').style.display = 'none';">Cancelar</button>
-                </form>
+                <button id="confirm-button" class="bg-azul text-blanco py-2 px-4 rounded mr-2">Confirmar</button>
+                <button type="button" class="bg-rojo text-blanco py-2 px-4 rounded" onclick="document.getElementById('confirm-modal').style.display = 'none';">Cancelar</button>
             </div>
         </div>
 
@@ -81,14 +78,13 @@ date_default_timezone_set('America/Bogota');
             // Mostrar el modal de confirmación solo cuando se haya seleccionado un archivo
             document.getElementById('file-upload').addEventListener('change', function() {
                 if (this.files.length > 0) {
-                    const file = this.files[0];
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        document.getElementById('file-hidden').value = e.target.result;
-                        document.getElementById('confirm-modal').style.display = 'flex';
-                    };
-                    reader.readAsDataURL(file);
+                    document.getElementById('confirm-modal').style.display = 'flex';
                 }
+            });
+
+            // Enviar el formulario al confirmar
+            document.getElementById('confirm-button').addEventListener('click', function() {
+                document.getElementById('import-form').submit();
             });
         </script>
 
