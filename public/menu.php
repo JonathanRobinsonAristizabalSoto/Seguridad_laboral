@@ -1,5 +1,8 @@
 <!-- menu.php -->
 
+<!-- Enlace a la CDN de Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 <header class="text-azul py-4 px-6 flex justify-between items-center">
     <!-- Logo a la izquierda -->
     <div class="flex items-center">
@@ -30,10 +33,26 @@
             </button>
         </div>
         <ul>
-            <li><a href="/home.php" class="text-lg font-medium text-blanco hover:text-azul mb-4 block font-sans">Inicio</a></li>
-            <li><a href="/formulario.php" class="text-lg font-medium text-blanco hover:text-azul mb-4 block font-sans">Crear nuevo mes de indicadores</a></li>
-            <li><a href="/formularioActualizar.php" class="text-lg font-medium text-blanco hover:text-azul mb-4 block font-sans">Actualizar Indicadores</a></li>
-            <li><a href="/dashboard.php" class="text-lg font-medium text-blanco hover:text-azul mb-4 block font-sans">Dashboard</a></li>
+            <li>
+                <a href="/home.php" class="text-lg font-medium text-blanco hover:text-azul mb-4 block font-sans">
+                    <i class="fas fa-home text-blanco mr-2"></i>Inicio
+                </a>
+            </li>
+            <li>
+                <a href="/formulario.php" class="text-lg font-medium text-blanco hover:text-azul mb-4 block font-sans">
+                    <i class="fas fa-plus-circle text-blanco mr-2"></i>Crear nuevo mes de indicadores
+                </a>
+            </li>
+            <li>
+                <a href="/formularioActualizar.php" class="text-lg font-medium text-blanco hover:text-azul mb-4 block font-sans">
+                    <i class="fas fa-edit text-blanco mr-2"></i>Actualizar Indicadores
+                </a>
+            </li>
+            <li>
+                <a href="/dashboard.php" class="text-lg font-medium text-blanco hover:text-azul mb-4 block font-sans">
+                    <i class="fas fa-tachometer-alt text-blanco mr-2"></i>Dashboard
+                </a>
+            </li>
         </ul>
     </div>
 </div>
