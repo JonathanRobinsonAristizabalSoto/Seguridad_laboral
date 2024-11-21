@@ -32,7 +32,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $in_administrativos = $_POST['in_administrativos'];
     $otros_incidentes = $_POST['otros_incidentes'];
     $indice_severidad = $_POST['indice_severidad'];
-    $indice_frecuencia = $_POST['indice_frecuencia'];
     $casos_covid_positivos = $_POST['casos_covid_positivos'];
     $inspecciones_programadas = $_POST['inspecciones_programadas'];
     $inspecciones_ejecutadas = $_POST['inspecciones_ejecutadas'];
@@ -46,6 +45,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Calcular el Índice de Accidentabilidad
     $indice_accidentabilidad = ($accidentes / $cantidad_trabajadores) * 1000;
+
+    // Calcular el Índice de Frecuencia
+    $horas_trabajadas = $cantidad_trabajadores * 47 * 4; // 47 horas semanales * 4 semanas
+    $indice_frecuencia = ($accidentes / $horas_trabajadas) * 1000000;
 
     // Preparar la consulta SQL para insertar los datos
     $sql = "INSERT INTO datos (
