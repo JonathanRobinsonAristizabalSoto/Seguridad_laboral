@@ -285,10 +285,9 @@ include('head.php');
 
                     // Ordenar los meses en el orden correcto
                     const ordenMeses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
-                    ordenMeses.forEach(mes => {
-                        if (meses.some(m => m.mes === mes)) {
-                            mesSelect.append(new Option(mes, mes));
-                        }
+                    const mesesOrdenados = ordenMeses.filter(mes => meses.some(m => m.mes === mes));
+                    mesesOrdenados.forEach(mes => {
+                        mesSelect.append(new Option(mes, mes));
                     });
                 });
             });
