@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file'])) {
         }
 
         $mysqli->close();
-        header('Location: dashboard.php?import_success=1');
+        header('Location: dashboard.php');
         exit;
     } catch (Exception $e) {
         die("Error al procesar el archivo Excel: " . $e->getMessage());
