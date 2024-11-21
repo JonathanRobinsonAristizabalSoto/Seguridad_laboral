@@ -177,20 +177,12 @@ include('head.php');
                     <input type="number" step="0.01" name="indice_severidad" id="indice_severidad" class="p-2 border border-gray-300 rounded-md" placeholder="Ingrese el índice" required>
                 </div>
 
-                <!-- Campo: Indice de Frecuencia -->
-                <div class="flex flex-col">
-                    <label for="indice_frecuencia" class="font-semibold text-azul flex items-center">
-                        <i class="fas fa-sync-alt text-rojo mr-2"></i> Índice de Frecuencia
-                    </label>
-                    <input type="number" step="0.01" name="indice_frecuencia" id="indice_frecuencia" class="p-2 border border-gray-300 rounded-md" placeholder="Ingrese el índice" required>
-                </div>
-
                 <!-- Campo: Índice de Accidentabilidad -->
                 <div class="flex flex-col">
                     <label for="indice_accidentabilidad" class="font-semibold text-azul flex items-center">
                         <i class="fas fa-chart-line text-rojo mr-2"></i> Índice de Accidentabilidad
                     </label>
-                    <input type="number" step="0.01" name="indice_accidentabilidad" id="indice_accidentabilidad" class="p-2 border border-gray-300 rounded-md" placeholder="Ingrese el índice" required>
+                    <input type="number" step="0.01" name="indice_accidentabilidad" id="indice_accidentabilidad" class="p-2 border border-gray-300 rounded-md" placeholder="Ingrese el índice" readonly>
                 </div>
 
                 <!-- Campo: Casos Covid Positivos -->
@@ -278,6 +270,19 @@ include('head.php');
     // Incluir la lógica de consulta desde insertar.php
     include('footer.php');
     ?>
+
+    <script>
+        // Calcular el Índice de Accidentabilidad automáticamente
+        document.getElementById('accidentes').addEventListener('input', calcularIndiceAccidentabilidad);
+        document.getElementById('cantidad_trabajadores').addEventListener('input', calcularIndiceAccidentabilidad);
+
+        function calcularIndiceAccidentabilidad() {
+            var accidentes = parseFloat(document.getElementById('accidentes').value) || 0;
+            var cantidadTrabajadores = parseFloat(document.getElementById('cantidad_trabajadores').value) || 0;
+            var indiceAccidentabilidad = (accidentes / cantidadTrabajadores) * 1000;
+            document.getElementById('indice_accidentabilidad').value = indiceAccidentabilidad.toFixed(2);
+        }
+    </script>
 
 </body>
 

@@ -33,7 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $otros_incidentes = $_POST['otros_incidentes'];
     $indice_severidad = $_POST['indice_severidad'];
     $indice_frecuencia = $_POST['indice_frecuencia'];
-    $indice_accidentabilidad = $_POST['indice_accidentabilidad'];
     $casos_covid_positivos = $_POST['casos_covid_positivos'];
     $inspecciones_programadas = $_POST['inspecciones_programadas'];
     $inspecciones_ejecutadas = $_POST['inspecciones_ejecutadas'];
@@ -44,6 +43,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $passt_programadas = $_POST['passt_programadas'];
     $passt_ejecutadas = $_POST['passt_ejecutadas'];
     $fecha_actualizacion = date('Y-m-d H:i:s'); // Obtener la fecha y hora actual
+
+    // Calcular el Índice de Accidentabilidad
+    $indice_accidentabilidad = ($accidentes / $cantidad_trabajadores) * 1000;
 
     // Preparar la consulta SQL para insertar los datos
     $sql = "INSERT INTO datos (
@@ -149,7 +151,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// Obtener los datos existentes de la base de datos
 // Obtener los datos del último mes
 $sql = "SELECT * FROM datos ORDER BY anio DESC, mes DESC LIMIT 1";
 $stmt = $pdo->query($sql);
