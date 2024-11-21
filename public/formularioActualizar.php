@@ -164,7 +164,7 @@ include('head.php');
                     <label for="indice_frecuencia" class="font-semibold text-azul flex items-center">
                         <i class="fas fa-sync-alt text-rojo mr-2"></i> Índice de Frecuencia
                     </label>
-                    <input type="number" step="0.01" name="indice_frecuencia" id="indice_frecuencia" class="p-2 border border-gray-300 rounded-md" readonly>
+                    <input type="number" step="0.01" name="indice_frecuencia" id="indice_frecuencia" class="p-2 border border-gray-300 rounded-md" required>
                 </div>
 
                 <!-- Campo: Índice de Accidentabilidad -->
@@ -172,7 +172,7 @@ include('head.php');
                     <label for="indice_accidentabilidad" class="font-semibold text-azul flex items-center">
                         <i class="fas fa-chart-line text-rojo mr-2"></i> Índice de Accidentabilidad
                     </label>
-                    <input type="number" step="0.01" name="indice_accidentabilidad" id="indice_accidentabilidad" class="p-2 border border-gray-300 rounded-md" readonly>
+                    <input type="number" step="0.01" name="indice_accidentabilidad" id="indice_accidentabilidad" class="p-2 border border-gray-300 rounded-md" required>
                 </div>
 
                 <!-- Campo: Casos Covid Positivos -->
@@ -282,13 +282,8 @@ include('head.php');
                     const mesSelect = $('#mes');
                     mesSelect.empty();
                     mesSelect.append(new Option('Seleccione un mes', '')); // Añadir opción por defecto
-
-                    // Ordenar los meses en el orden correcto
-                    const ordenMeses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
-                    ordenMeses.forEach(mes => {
-                        if (meses.some(m => m.mes === mes)) {
-                            mesSelect.append(new Option(mes, mes));
-                        }
+                    meses.forEach(mes => {
+                        mesSelect.append(new Option(mes.mes, mes.mes));
                     });
                 });
             });
@@ -304,28 +299,8 @@ include('head.php');
                             $('#' + key).val(datos[key]);
                         }
                     }
-                    calcularIndices(); // Calcular índices después de cargar los datos
                 });
             });
-
-            // Calcular el Índice de Accidentabilidad e Índice de Frecuencia automáticamente
-            $('#accidentes, #cantidad_trabajadores').on('input', function() {
-                calcularIndices();
-            });
-
-            function calcularIndices() {
-                var accidentes = parseFloat($('#accidentes').val()) || 0;
-                var cantidadTrabajadores = parseFloat($('#cantidad_trabajadores').val()) || 0;
-
-                // Calcular Índice de Accidentabilidad
-                var indiceAccidentabilidad = (accidentes / cantidadTrabajadores) * 1000;
-                $('#indice_accidentabilidad').val(indiceAccidentabilidad.toFixed(2));
-
-                // Calcular Índice de Frecuencia
-                var horasTrabajadas = cantidadTrabajadores * 47 * 4; // 47 horas semanales * 4 semanas
-                var indiceFrecuencia = (accidentes / horasTrabajadas) * 83333.33; // Ajuste mensual
-                $('#indice_frecuencia').val(indiceFrecuencia.toFixed(2));
-            }
         });
     </script>
 </body>
