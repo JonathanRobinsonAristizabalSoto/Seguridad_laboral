@@ -301,6 +301,25 @@ include('head.php');
                     }
                 });
             });
+
+            // Calcular el Índice de Accidentabilidad e Índice de Frecuencia automáticamente
+            $('#accidentes, #cantidad_trabajadores').on('input', function() {
+                calcularIndices();
+            });
+
+            function calcularIndices() {
+                var accidentes = parseFloat($('#accidentes').val()) || 0;
+                var cantidadTrabajadores = parseFloat($('#cantidad_trabajadores').val()) || 0;
+
+                // Calcular Índice de Accidentabilidad
+                var indiceAccidentabilidad = (accidentes / cantidadTrabajadores) * 1000;
+                $('#indice_accidentabilidad').val(indiceAccidentabilidad.toFixed(2));
+
+                // Calcular Índice de Frecuencia
+                var horasTrabajadas = cantidadTrabajadores * 47 * 4; // 47 horas semanales * 4 semanas
+                var indiceFrecuencia = (accidentes / horasTrabajadas) * 83333.33; // Ajuste mensual
+                $('#indice_frecuencia').val(indiceFrecuencia.toFixed(2));
+            }
         });
     </script>
 </body>
