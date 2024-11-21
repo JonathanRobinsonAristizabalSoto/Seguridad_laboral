@@ -13,7 +13,6 @@ include('head.php');
     // Incluir la lógica de consulta desde insertar.php
     include('insertar.php');
 
-
     // Obtener el mes actual
     $mes_actual = date('F');
     $meses = [

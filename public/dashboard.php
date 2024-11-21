@@ -101,6 +101,15 @@ date_default_timezone_set('America/Bogota');
             </div>
         </div>
 
+        <!-- Modal de éxito de creación -->
+        <div id="create-success-modal" class="fixed inset-0 flex items-center justify-center bg-negro bg-opacity-75 hidden">
+            <div class="bg-blanco p-6 rounded shadow-lg text-center w-11/12 sm:w-1/2 lg:w-1/3">
+                <h2 class="text-xl mb-4 text-azul">¡Creación Exitosa!</h2>
+                <p class="mb-4">Los indicadores del mes <span id="create-mes"></span> del año <span id="create-anio"></span> se han creado exitosamente.</p>
+                <button type="button" class="bg-azul text-blanco py-2 px-4 rounded" onclick="document.getElementById('create-success-modal').style.display = 'none';">Cerrar</button>
+            </div>
+        </div>
+
         <script>
             // Mostrar el modal de confirmación solo cuando se haya seleccionado un archivo
             document.getElementById('file-upload').addEventListener('change', function() {
@@ -125,6 +134,13 @@ date_default_timezone_set('America/Bogota');
                 document.getElementById('update-mes').innerText = "<?php echo $_GET['mes']; ?>";
                 document.getElementById('update-anio').innerText = "<?php echo $_GET['anio']; ?>";
                 document.getElementById('update-success-modal').style.display = 'flex';
+            <?php endif; ?>
+
+            // Mostrar el modal de éxito de creación si se ha creado correctamente
+            <?php if (isset($_GET['create_success']) && $_GET['create_success'] == 1): ?>
+                document.getElementById('create-mes').innerText = "<?php echo $_GET['mes']; ?>";
+                document.getElementById('create-anio').innerText = "<?php echo $_GET['anio']; ?>";
+                document.getElementById('create-success-modal').style.display = 'flex';
             <?php endif; ?>
         </script>
 
