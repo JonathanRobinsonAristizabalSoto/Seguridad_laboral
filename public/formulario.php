@@ -177,13 +177,14 @@ include('head.php');
                     <input type="number" step="0.01" name="indice_severidad" id="indice_severidad" class="p-2 border border-gray-300 rounded-md" placeholder="Ingrese el índice" required>
                 </div>
 
-                <!-- Campo: Indice de Frecuencia -->
+                <!-- El campo para el índice de frecuencia ajustado debe mostrar el valor calculado -->
                 <div class="flex flex-col">
-                    <label for="indice_frecuencia" class="font-semibold text-azul flex items-center">
-                        <i class="fas fa-sync-alt text-rojo mr-2"></i> Índice de Frecuencia
+                    <label for="indice_frecuencia_ajustado" class="font-semibold text-azul flex items-center">
+                        <i class="fas fa-calculator text-rojo mr-2"></i> Índice de Frecuencia Ajustado
                     </label>
-                    <input type="number" step="0.01" name="indice_frecuencia" id="indice_frecuencia" class="p-2 border border-gray-300 rounded-md" placeholder="Ingrese el índice" required>
+                    <input type="number" name="indice_frecuencia_ajustado" id="indice_frecuencia_ajustado" class="p-2 border border-gray-300 rounded-md" value="<?php echo number_format($indice_frecuencia_ajustado, 2); ?>" readonly>
                 </div>
+
 
                 <!-- Campo: Índice de Accidentabilidad -->
                 <div class="flex flex-col">
@@ -292,19 +293,37 @@ include('head.php');
             var indiceAccidentabilidad = (accidentes / cantidadTrabajadores) * 1000;
             document.getElementById('indice_accidentabilidad').value = indiceAccidentabilidad.toFixed(2);
 
-            // Calcular Índice de Frecuencia
-            var horasTrabajadas = cantidadTrabajadores * 47 * 4; // 47 horas semanales * 4 semanas
-            var indiceFrecuencia = (accidentes / horasTrabajadas) * 1000000;
-
-            // Aplicar ajuste mensual: convertir el índice de frecuencia mensual a base anual
-            // Factor de conversión: 83,333.33 horas por mes
-            var ajusteMensual = (indiceFrecuencia * 83333.33) / 1000000; // Ajuste del índice mensual a base anual
-            document.getElementById('indice_frecuencia').value = indiceFrecuencia.toFixed(2);
-
-            // Mostrar el Índice de Frecuencia Ajustado
-            document.getElementById('indice_frecuencia_ajustado').value = ajusteMensual.toFixed(2);
         }
     </script>
+
+    <script>
+        // Función para calcular el índice de frecuencia ajustado
+        function calcularIndiceFrecuencia() {
+            const trabajadoresOperativos = parseInt(document.getElementById('personal_operativo').value) || 0;
+            const trabajadoresAdministrativos = parseInt(document.getElementById('personal_administrativo').value) || 0;
+            const accidentes = parseInt(document.getElementById('accidentes').value) || 0;
+            const horasPorTrabajador = 188; // Suponemos 160 horas por trabajador al mes
+
+            // Calcular el total de horas trabajadas
+            const totalTrabajadores = trabajadoresOperativos + trabajadoresAdministrativos;
+            const totalHorasTrabajadas = totalTrabajadores * horasPorTrabajador;
+
+            // Calcular el índice de frecuencia ajustado
+            let indiceFrecuenciaAjustado = 0;
+            if (totalHorasTrabajadas > 0) {
+                indiceFrecuenciaAjustado = (accidentes * 1000000) / totalHorasTrabajadas;
+            }
+
+            // Mostrar el índice de frecuencia ajustado en el formulario
+            document.getElementById('indice_frecuencia_ajustado').value = indiceFrecuenciaAjustado.toFixed(2);
+        }
+
+        // Escuchar cambios en los campos relevantes
+        document.getElementById('personal_operativo').addEventListener('input', calcularIndiceFrecuencia);
+        document.getElementById('personal_administrativo').addEventListener('input', calcularIndiceFrecuencia);
+        document.getElementById('accidentes').addEventListener('input', calcularIndiceFrecuencia);
+    </script>
+
 
 
 </body>
