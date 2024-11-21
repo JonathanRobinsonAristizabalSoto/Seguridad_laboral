@@ -11,7 +11,7 @@ USE seguridad_laboral;
 CREATE TABLE `datos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,  -- Definir el 'id' como AUTO_INCREMENT
   `anio` int(4) NOT NULL,  -- Nuevo campo 'año'
-  `mes` varchar(3) NOT NULL,
+  `mes` varchar(12) NOT NULL,  -- Cambiar la longitud del campo 'mes' a 10
   `cantidad_trabajadores` int(11) NOT NULL,
   `personal_administrativo` int(11) NOT NULL,
   `personal_operativo` int(11) NOT NULL,
