@@ -3,6 +3,9 @@
 
 include('configDB.php');
 
+// Establecer la zona horaria a Colombia
+date_default_timezone_set('America/Bogota');
+
 // Crear conexión a la base de datos
 $mysqli = new mysqli($host, $username, $password, $dbname);
 
