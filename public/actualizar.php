@@ -229,7 +229,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         $stmt->execute($params);
         // Redirigir al dashboard después de insertar los datos
-        header("Location: dashboard.php");
+        header("Location: dashboard.php?update_success=1&anio=$anio&mes=$mes");
         exit();
     } catch (PDOException $e) {
         echo "<p class='text-red-600 text-center'>Error al insertar los datos: " . $e->getMessage() . "</p>";
