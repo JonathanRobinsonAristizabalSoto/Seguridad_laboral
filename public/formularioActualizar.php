@@ -282,8 +282,13 @@ include('head.php');
                     const mesSelect = $('#mes');
                     mesSelect.empty();
                     mesSelect.append(new Option('Seleccione un mes', '')); // Añadir opción por defecto
-                    meses.forEach(mes => {
-                        mesSelect.append(new Option(mes.mes, mes.mes));
+
+                    // Ordenar los meses en el orden correcto
+                    const ordenMeses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+                    ordenMeses.forEach(mes => {
+                        if (meses.some(m => m.mes === mes)) {
+                            mesSelect.append(new Option(mes, mes));
+                        }
                     });
                 });
             });
