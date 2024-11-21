@@ -177,14 +177,13 @@ include('head.php');
                     <input type="number" step="0.01" name="indice_severidad" id="indice_severidad" class="p-2 border border-gray-300 rounded-md" placeholder="Ingrese el índice" required>
                 </div>
 
-                <!-- Campo: Índice de Frecuencia Ajustado -->
+                <!-- Campo: Indice de Frecuencia -->
                 <div class="flex flex-col">
-                    <label for="indice_frecuencia_ajustado" class="font-semibold text-azul flex items-center">
-                        <i class="fas fa-sync-alt text-rojo mr-2"></i> Índice de Frecuencia Ajustado
+                    <label for="indice_frecuencia" class="font-semibold text-azul flex items-center">
+                        <i class="fas fa-sync-alt text-rojo mr-2"></i> Índice de Frecuencia
                     </label>
-                    <input type="number" step="0.01" name="indice_frecuencia_ajustado" id="indice_frecuencia_ajustado" class="p-2 border border-gray-300 rounded-md" placeholder="Índice de Frecuencia Ajustado" readonly>
+                    <input type="number" step="0.01" name="indice_frecuencia" id="indice_frecuencia" class="p-2 border border-gray-300 rounded-md" placeholder="Ingrese el índice" required>
                 </div>
-
 
                 <!-- Campo: Índice de Accidentabilidad -->
                 <div class="flex flex-col">
