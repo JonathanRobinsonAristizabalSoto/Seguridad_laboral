@@ -149,13 +149,25 @@ date_default_timezone_set('America/Bogota');
             <div class="flex justify-center items-center mb-2">
                 <i class="fas fa-calendar-alt text-rojo mr-2"></i>
                 <h2 class="text-base font-heading font-semibold text-azul">
-                    Fecha de actualización: <span class="text-rojo"><?php echo date('d-m-Y', strtotime($ultima_actualizacion)); ?></span>
+                    Fecha de actualización:
+                    <span class="text-rojo">
+                        <?php
+                        $fecha_actualizacion = new DateTime($ultima_actualizacion, new DateTimeZone('UTC'));
+                        $fecha_actualizacion->setTimezone(new DateTimeZone('America/Bogota'));
+                        echo $fecha_actualizacion->format('d-m-Y');
+                        ?>
+                    </span>
                 </h2>
             </div>
             <div class="flex justify-center items-center">
                 <i class="fas fa-clock text-rojo mr-2"></i>
                 <h2 class="text-base font-heading font-semibold text-azul">
-                    Hora de actualización: <span class="text-rojo"><?php echo date('H:i:s', strtotime($ultima_actualizacion)); ?></span>
+                    Hora de actualización:
+                    <span class="text-rojo">
+                        <?php
+                        echo $fecha_actualizacion->format('H:i:s');
+                        ?>
+                    </span>
                 </h2>
             </div>
         </div>
