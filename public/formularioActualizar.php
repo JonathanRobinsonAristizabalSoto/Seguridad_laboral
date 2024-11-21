@@ -164,7 +164,7 @@ include('head.php');
                     <label for="indice_frecuencia" class="font-semibold text-azul flex items-center">
                         <i class="fas fa-sync-alt text-rojo mr-2"></i> Índice de Frecuencia
                     </label>
-                    <input type="number" step="0.01" name="indice_frecuencia" id="indice_frecuencia" class="p-2 border border-gray-300 rounded-md" required>
+                    <input type="number" step="0.01" name="indice_frecuencia" id="indice_frecuencia" class="p-2 border border-gray-300 rounded-md" readonly>
                 </div>
 
                 <!-- Campo: Índice de Accidentabilidad -->
@@ -172,7 +172,7 @@ include('head.php');
                     <label for="indice_accidentabilidad" class="font-semibold text-azul flex items-center">
                         <i class="fas fa-chart-line text-rojo mr-2"></i> Índice de Accidentabilidad
                     </label>
-                    <input type="number" step="0.01" name="indice_accidentabilidad" id="indice_accidentabilidad" class="p-2 border border-gray-300 rounded-md" required>
+                    <input type="number" step="0.01" name="indice_accidentabilidad" id="indice_accidentabilidad" class="p-2 border border-gray-300 rounded-md" readonly>
                 </div>
 
                 <!-- Campo: Casos Covid Positivos -->
@@ -299,6 +299,7 @@ include('head.php');
                             $('#' + key).val(datos[key]);
                         }
                     }
+                    calcularIndices(); // Calcular índices después de cargar los datos
                 });
             });
 
