@@ -262,73 +262,67 @@ include('head.php');
     ?>
 
     <!-- Scripts -->
-    <!-- Scripts -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function () {
-        // Cargar años disponibles
-        $.get('actualizar.php?getAños', function (data) {
-            const años = JSON.parse(data);
-            const añoSelect = $('#anio');
-            años.forEach(año => {
-                añoSelect.append(new Option(año.anio, año.anio));
-            });
-        });
-
-        // Cargar meses cuando se selecciona un año
-        $('#anio').on('change', function () {
-            const año = $(this).val();
-            $.get('actualizar.php?getMeses&anio=' + año, function (data) {
-                let meses = JSON.parse(data);
-
-                // Ordenar los meses en orden cronológico (asumiendo formato: {mes: "01", ...})
-                meses.sort((a, b) => parseInt(a.mes) - parseInt(b.mes));
-
-                const mesSelect = $('#mes');
-                mesSelect.empty();
-                mesSelect.append(new Option('Seleccione un mes', '')); // Añadir opción por defecto
-                meses.forEach(mes => {
-                    mesSelect.append(new Option(mes.mes, mes.mes));
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Cargar años disponibles
+            $.get('actualizar.php?getAños', function(data) {
+                const años = JSON.parse(data);
+                const añoSelect = $('#anio');
+                años.forEach(año => {
+                    añoSelect.append(new Option(año.anio, año.anio));
                 });
             });
-        });
 
-        // Cargar datos cuando se selecciona un mes
-        $('#mes').on('change', function () {
-            const año = $('#anio').val();
-            const mes = $(this).val();
-            $.get('actualizar.php?getDatos&anio=' + año + '&mes=' + mes, function (data) {
-                const datos = JSON.parse(data);
-                for (const key in datos) {
-                    if (datos.hasOwnProperty(key) && key !== 'anio' && key !== 'mes') {
-                        $('#' + key).val(datos[key]);
-                    }
-                }
-                calcularIndices(); // Calcular índices después de cargar los datos
+            // Cargar meses cuando se selecciona un año
+            $('#anio').on('change', function() {
+                const año = $(this).val();
+                $.get('actualizar.php?getMeses&anio=' + año, function(data) {
+                    const meses = JSON.parse(data);
+                    const mesSelect = $('#mes');
+                    mesSelect.empty();
+                    mesSelect.append(new Option('Seleccione un mes', '')); // Añadir opción por defecto
+                    meses.forEach(mes => {
+                        mesSelect.append(new Option(mes.mes, mes.mes));
+                    });
+                });
             });
+
+            // Cargar datos cuando se selecciona un mes
+            $('#mes').on('change', function() {
+                const año = $('#anio').val();
+                const mes = $(this).val();
+                $.get('actualizar.php?getDatos&anio=' + año + '&mes=' + mes, function(data) {
+                    const datos = JSON.parse(data);
+                    for (const key in datos) {
+                        if (datos.hasOwnProperty(key) && key !== 'anio' && key !== 'mes') {
+                            $('#' + key).val(datos[key]);
+                        }
+                    }
+                    calcularIndices(); // Calcular índices después de cargar los datos
+                });
+            });
+
+            // Calcular el Índice de Accidentabilidad e Índice de Frecuencia automáticamente
+            $('#accidentes, #cantidad_trabajadores').on('input', function() {
+                calcularIndices();
+            });
+
+            function calcularIndices() {
+                var accidentes = parseFloat($('#accidentes').val()) || 0;
+                var cantidadTrabajadores = parseFloat($('#cantidad_trabajadores').val()) || 0;
+
+                // Calcular Índice de Accidentabilidad
+                var indiceAccidentabilidad = (accidentes / cantidadTrabajadores) * 1000;
+                $('#indice_accidentabilidad').val(indiceAccidentabilidad.toFixed(2));
+
+                // Calcular Índice de Frecuencia
+                var horasTrabajadas = cantidadTrabajadores * 47 * 4; // 47 horas semanales * 4 semanas
+                var indiceFrecuencia = (accidentes / horasTrabajadas) * 83333.33; // Ajuste mensual
+                $('#indice_frecuencia').val(indiceFrecuencia.toFixed(2));
+            }
         });
-
-        // Calcular el Índice de Accidentabilidad e Índice de Frecuencia automáticamente
-        $('#accidentes, #cantidad_trabajadores').on('input', function () {
-            calcularIndices();
-        });
-
-        function calcularIndices() {
-            var accidentes = parseFloat($('#accidentes').val()) || 0;
-            var cantidadTrabajadores = parseFloat($('#cantidad_trabajadores').val()) || 0;
-
-            // Calcular Índice de Accidentabilidad
-            var indiceAccidentabilidad = (accidentes / cantidadTrabajadores) * 1000;
-            $('#indice_accidentabilidad').val(indiceAccidentabilidad.toFixed(2));
-
-            // Calcular Índice de Frecuencia
-            var horasTrabajadas = cantidadTrabajadores * 47 * 4; // 47 horas semanales * 4 semanas
-            var indiceFrecuencia = (accidentes / horasTrabajadas) * 83333.33; // Ajuste mensual
-            $('#indice_frecuencia').val(indiceFrecuencia.toFixed(2));
-        }
-    });
-</script>
-
+    </script>
 </body>
 
 </html>
