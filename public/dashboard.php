@@ -51,16 +51,16 @@ date_default_timezone_set('America/Bogota');
 
         <!-- Botones de exportar e importar -->
         <div class="text-center mb-8">
-            <form id="import-form" method="post" action="importar.php" enctype="multipart/form-data" class="inline-block">
-                <label for="file-upload" class="bg-rojo text-blanco py-2 px-4 rounded w-full sm:w-auto cursor-pointer text-center block hover:bg-gris-oscuro">
-                    <i class="fas fa-file-import mr-2"></i>Importar Datos
-                </label>
-                <input id="file-upload" type="file" name="file" class="hidden">
-            </form>
             <form method="post" action="exportar.php" class="inline-block">
                 <button type="submit" class="bg-rojo text-blanco py-2 px-4 rounded w-full sm:w-auto text-center hover:bg-gris-oscuro">
                     <i class="fas fa-file-export mr-2"></i>Exportar Datos
                 </button>
+            </form>
+            <form method="post" action="importar.php" enctype="multipart/form-data" class="inline-block">
+                <label for="file-upload" class="bg-rojo text-blanco py-2 px-4 rounded w-full sm:w-auto cursor-pointer text-center block hover:bg-gris-oscuro">
+                    <i class="fas fa-file-import mr-2"></i>Importar Datos
+                </label>
+                <input id="file-upload" type="file" name="file" class="hidden">
             </form>
         </div>
 
@@ -69,26 +69,11 @@ date_default_timezone_set('America/Bogota');
             <div class="bg-blanco p-6 rounded shadow-lg text-center w-11/12 sm:w-1/2 lg:w-1/3">
                 <h2 class="text-xl mb-4">Confirmar Importación</h2>
                 <p class="mb-4">¿Estás seguro de que deseas importar los datos?</p>
-                <button id="confirm-button" class="bg-azul text-blanco py-2 px-4 rounded mr-2">Confirmar</button>
-                <button type="button" class="bg-rojo text-blanco py-2 px-4 rounded" onclick="document.getElementById('confirm-modal').style.display = 'none';">Cancelar</button>
-            </div>
-        </div>
-
-        <!-- Modal de éxito de exportación -->
-        <div id="export-success-modal" class="fixed inset-0 flex items-center justify-center bg-negro bg-opacity-75 hidden">
-            <div class="bg-blanco p-6 rounded shadow-lg text-center w-11/12 sm:w-1/2 lg:w-1/3">
-                <h2 class="text-xl mb-4">Exportación Exitosa</h2>
-                <p class="mb-4">La base de datos se ha exportado con éxito.</p>
-                <button type="button" class="bg-azul text-blanco py-2 px-4 rounded" onclick="document.getElementById('export-success-modal').style.display = 'none';">Cerrar</button>
-            </div>
-        </div>
-
-        <!-- Modal de éxito de importación -->
-        <div id="import-success-modal" class="fixed inset-0 flex items-center justify-center bg-negro bg-opacity-75 hidden">
-            <div class="bg-blanco p-6 rounded shadow-lg text-center w-11/12 sm:w-1/2 lg:w-1/3">
-                <h2 class="text-xl mb-4">Importación Exitosa</h2>
-                <p class="mb-4">Los datos se han importado con éxito.</p>
-                <button type="button" class="bg-azul text-blanco py-2 px-4 rounded" onclick="document.getElementById('import-success-modal').style.display = 'none';">Cerrar</button>
+                <form method="post" action="importar.php" enctype="multipart/form-data">
+                    <input type="hidden" id="file-hidden" name="file">
+                    <button type="submit" class="bg-azul text-blanco py-2 px-4 rounded mr-2">Confirmar</button>
+                    <button type="button" class="bg-rojo text-blanco py-2 px-4 rounded" onclick="document.getElementById('confirm-modal').style.display = 'none';">Cancelar</button>
+                </form>
             </div>
         </div>
 
@@ -104,16 +89,6 @@ date_default_timezone_set('America/Bogota');
             document.getElementById('confirm-button').addEventListener('click', function() {
                 document.getElementById('import-form').submit();
             });
-
-            // Mostrar el modal de éxito de exportación si se ha exportado correctamente
-            <?php if (isset($_GET['export_success'])): ?>
-                document.getElementById('export-success-modal').style.display = 'flex';
-            <?php endif; ?>
-
-            // Mostrar el modal de éxito de importación si se ha importado correctamente
-            <?php if (isset($_GET['import_success'])): ?>
-                document.getElementById('import-success-modal').style.display = 'flex';
-            <?php endif; ?>
         </script>
 
         <!-- Mostrar la fecha y hora de actualización -->
@@ -574,6 +549,9 @@ date_default_timezone_set('America/Bogota');
             }
         });
     </script>
+
+
+
 </body>
 
 </html>

@@ -100,6 +100,4 @@ readfile($filename);
 // Eliminar el archivo temporal
 unlink($filename);
 
-// Redirigir a la página principal con un mensaje de éxito
-header('Location: dashboard.php?export_success=1');
 exit;
