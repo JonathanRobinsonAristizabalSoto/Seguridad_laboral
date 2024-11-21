@@ -29,7 +29,7 @@ date_default_timezone_set('America/Bogota');
 
     <!-- Contenido principal -->
     <div class="container mx-auto p-6">
-        <h1 class="text-2xl font-heading font-bold text-center text-rojo mb-8">REPORTES DE SEGURIDAD Y SALUD EN EL TRABAJO</h1>
+        <h1 class="text-2xl font-heading font-bold text-center text-rojo mb-8">REPORTE DE SEGURIDAD Y SALUD EN EL TRABAJO</h1>
 
         <!-- botones filtro meses para las graficas -->
         <div class="text-center mb-8">
@@ -81,13 +81,14 @@ date_default_timezone_set('America/Bogota');
             // Mostrar el modal de confirmación solo cuando se haya seleccionado un archivo
             document.getElementById('file-upload').addEventListener('change', function() {
                 if (this.files.length > 0) {
-                    document.getElementById('confirm-modal').style.display = 'flex';
+                    const file = this.files[0];
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.getElementById('file-hidden').value = e.target.result;
+                        document.getElementById('confirm-modal').style.display = 'flex';
+                    };
+                    reader.readAsDataURL(file);
                 }
-            });
-
-            // Enviar el formulario al confirmar
-            document.getElementById('confirm-button').addEventListener('click', function() {
-                document.getElementById('import-form').submit();
             });
         </script>
 
