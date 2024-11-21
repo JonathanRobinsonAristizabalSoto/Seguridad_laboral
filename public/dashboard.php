@@ -115,14 +115,16 @@ date_default_timezone_set('America/Bogota');
             });
         </script>
         <script>
-            // Mostrar el modal de éxito de exportación si se ha exportado correctamente
-            <?php if (isset($_GET['export_success'])): ?>
-                document.getElementById('export-success-modal').style.display = 'flex';
+            // Mostrar el modal de éxito de importación si se ha importado correctamente
+            <?php if (isset($_GET['import_success']) && $_GET['import_success'] == 1): ?>
+                document.getElementById('import-success-modal').style.display = 'flex';
             <?php endif; ?>
 
-            // Mostrar el modal de éxito de importación si se ha importado correctamente
-            <?php if (isset($_GET['import_success'])): ?>
-                document.getElementById('import-success-modal').style.display = 'flex';
+            // Mostrar el modal de éxito de actualización si se ha actualizado correctamente
+            <?php if (isset($_GET['update_success']) && $_GET['update_success'] == 1): ?>
+                document.getElementById('update-mes').innerText = "<?php echo $_GET['mes']; ?>";
+                document.getElementById('update-anio').innerText = "<?php echo $_GET['anio']; ?>";
+                document.getElementById('update-success-modal').style.display = 'flex';
             <?php endif; ?>
         </script>
 
