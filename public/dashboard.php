@@ -81,14 +81,13 @@ date_default_timezone_set('America/Bogota');
             // Mostrar el modal de confirmación solo cuando se haya seleccionado un archivo
             document.getElementById('file-upload').addEventListener('change', function() {
                 if (this.files.length > 0) {
-                    const file = this.files[0];
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        document.getElementById('file-hidden').value = e.target.result;
-                        document.getElementById('confirm-modal').style.display = 'flex';
-                    };
-                    reader.readAsDataURL(file);
+                    document.getElementById('confirm-modal').style.display = 'flex';
                 }
+            });
+
+            // Enviar el formulario al confirmar
+            document.getElementById('confirm-button').addEventListener('click', function() {
+                document.getElementById('import-form').submit();
             });
         </script>
 
