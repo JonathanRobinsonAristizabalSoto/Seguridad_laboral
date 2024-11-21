@@ -70,7 +70,7 @@ include('head.php');
                     <label for="cantidad_trabajadores" class="font-semibold text-azul flex items-center">
                         <i class="fas fa-users text-rojo mr-2"></i> Cantidad de Trabajadores
                     </label>
-                    <input type="number" name="cantidad_trabajadores" id="cantidad_trabajadores" class="p-2 border border-gray-300 rounded-md" placeholder="Ingrese la cantidad" value="<?php echo isset($datos['cantidad_trabajadores']) ? $datos['cantidad_trabajadores'] : ''; ?>" required>
+                    <input type="number" name="cantidad_trabajadores" id="cantidad_trabajadores" class="p-2 border border-gray-300 rounded-md" placeholder="Ingrese la cantidad" required>
                 </div>
 
                 <!-- Campo: Personal Administrativo -->
@@ -78,7 +78,7 @@ include('head.php');
                     <label for="personal_administrativo" class="font-semibold text-azul flex items-center">
                         <i class="fas fa-user-tie text-rojo mr-2"></i> Personal Administrativo
                     </label>
-                    <input type="number" name="personal_administrativo" id="personal_administrativo" class="p-2 border border-gray-300 rounded-md" placeholder="Ingrese la cantidad" value="<?php echo isset($datos['personal_administrativo']) ? $datos['personal_administrativo'] : ''; ?>" required>
+                    <input type="number" name="personal_administrativo" id="personal_administrativo" class="p-2 border border-gray-300 rounded-md" placeholder="Ingrese la cantidad" required>
                 </div>
 
                 <!-- Campo: Personal Operativo -->
@@ -86,7 +86,7 @@ include('head.php');
                     <label for="personal_operativo" class="font-semibold text-azul flex items-center">
                         <i class="fas fa-hard-hat text-rojo mr-2"></i> Personal Operativo
                     </label>
-                    <input type="number" name="personal_operativo" id="personal_operativo" class="p-2 border border-gray-300 rounded-md" placeholder="Ingrese la cantidad" value="<?php echo isset($datos['personal_operativo']) ? $datos['personal_operativo'] : ''; ?>" required>
+                    <input type="number" name="personal_operativo" id="personal_operativo" class="p-2 border border-gray-300 rounded-md" placeholder="Ingrese la cantidad" required>
                 </div>
 
                 <!-- Campo: Actos Inseguros -->
