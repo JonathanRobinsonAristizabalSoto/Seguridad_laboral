@@ -78,7 +78,7 @@ date_default_timezone_set('America/Bogota');
         <div id="export-success-modal" class="fixed inset-0 flex items-center justify-center bg-negro bg-opacity-75 hidden">
             <div class="bg-blanco p-6 rounded shadow-lg text-center w-11/12 sm:w-1/2 lg:w-1/3">
                 <h2 class="text-xl mb-4">Exportación Exitosa</h2>
-                <p class="mb-4">La base de datos se ha exportado con éxito.</p>
+                <p class="mb-4">La base de datos se ha exportado con exitosamente.</p>
                 <button type="button" class="bg-azul text-blanco py-2 px-4 rounded" onclick="document.getElementById('export-success-modal').style.display = 'none';">Cerrar</button>
             </div>
         </div>
@@ -87,7 +87,7 @@ date_default_timezone_set('America/Bogota');
         <div id="import-success-modal" class="fixed inset-0 flex items-center justify-center bg-negro bg-opacity-75 hidden">
             <div class="bg-blanco p-6 rounded shadow-lg text-center w-11/12 sm:w-1/2 lg:w-1/3">
                 <h2 class="text-xl mb-4">Importación Exitosa</h2>
-                <p class="mb-4">Los datos se han importado con éxito.</p>
+                <p class="mb-4">La base de datos se ha importado exitosamente.</p>
                 <button type="button" class="bg-azul text-blanco py-2 px-4 rounded" onclick="document.getElementById('import-success-modal').style.display = 'none';">Cerrar</button>
             </div>
         </div>
