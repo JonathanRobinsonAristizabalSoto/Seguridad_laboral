@@ -48,10 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Calcular el Índice de Frecuencia
     $horas_trabajadas = $cantidad_trabajadores * 47 * 4; // 47 horas semanales * 4 semanas
-    $indice_frecuencia = ($accidentes / $horas_trabajadas) * 1000000;
-
-    // Ajuste mensual a base anual: Factor de conversión de 83,333.33 horas por mes
-    $indice_frecuencia_ajustado = ($indice_frecuencia * 83333.33) / 1000000;
+    $indice_frecuencia = ($accidentes / $horas_trabajadas) * 83333.33; // Ajuste mensual
 
     // Preparar la consulta SQL para insertar los datos
     $sql = "INSERT INTO datos (
@@ -73,7 +70,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 indice_severidad,
                 indice_frecuencia,
                 indice_accidentabilidad,
-                indice_frecuencia_ajustado,
                 casos_covid_positivos,
                 inspecciones_programadas,
                 inspecciones_ejecutadas,
@@ -103,7 +99,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 :indice_severidad,
                 :indice_frecuencia,
                 :indice_accidentabilidad,
-                :indice_frecuencia_ajustado,
                 :casos_covid_positivos,
                 :inspecciones_programadas,
                 :inspecciones_ejecutadas,
@@ -140,7 +135,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ':indice_severidad' => $indice_severidad,
             ':indice_frecuencia' => $indice_frecuencia,
             ':indice_accidentabilidad' => $indice_accidentabilidad,
-            ':indice_frecuencia_ajustado' => $indice_frecuencia_ajustado,
             ':casos_covid_positivos' => $casos_covid_positivos,
             ':inspecciones_programadas' => $inspecciones_programadas,
             ':inspecciones_ejecutadas' => $inspecciones_ejecutadas,
