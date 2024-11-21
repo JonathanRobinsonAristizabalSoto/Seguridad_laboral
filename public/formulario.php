@@ -177,13 +177,14 @@ include('head.php');
                     <input type="number" step="0.01" name="indice_severidad" id="indice_severidad" class="p-2 border border-gray-300 rounded-md" placeholder="Ingrese el índice" required>
                 </div>
 
-                <!-- Campo: Indice de Frecuencia -->
+                <!-- Campo: Índice de Frecuencia Ajustado -->
                 <div class="flex flex-col">
-                    <label for="indice_frecuencia" class="font-semibold text-azul flex items-center">
-                        <i class="fas fa-sync-alt text-rojo mr-2"></i> Índice de Frecuencia
+                    <label for="indice_frecuencia_ajustado" class="font-semibold text-azul flex items-center">
+                        <i class="fas fa-sync-alt text-rojo mr-2"></i> Índice de Frecuencia Ajustado
                     </label>
-                    <input type="number" step="0.01" name="indice_frecuencia" id="indice_frecuencia" class="p-2 border border-gray-300 rounded-md" placeholder="Ingrese el índice" required>
+                    <input type="number" step="0.01" name="indice_frecuencia_ajustado" id="indice_frecuencia_ajustado" class="p-2 border border-gray-300 rounded-md" placeholder="Índice de Frecuencia Ajustado" readonly>
                 </div>
+
 
                 <!-- Campo: Índice de Accidentabilidad -->
                 <div class="flex flex-col">
@@ -295,9 +296,17 @@ include('head.php');
             // Calcular Índice de Frecuencia
             var horasTrabajadas = cantidadTrabajadores * 47 * 4; // 47 horas semanales * 4 semanas
             var indiceFrecuencia = (accidentes / horasTrabajadas) * 1000000;
+
+            // Aplicar ajuste mensual: convertir el índice de frecuencia mensual a base anual
+            // Factor de conversión: 83,333.33 horas por mes
+            var ajusteMensual = (indiceFrecuencia * 83333.33) / 1000000; // Ajuste del índice mensual a base anual
             document.getElementById('indice_frecuencia').value = indiceFrecuencia.toFixed(2);
+
+            // Mostrar el Índice de Frecuencia Ajustado
+            document.getElementById('indice_frecuencia_ajustado').value = ajusteMensual.toFixed(2);
         }
     </script>
+
 
 </body>
 
