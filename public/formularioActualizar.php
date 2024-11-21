@@ -263,6 +263,8 @@ include('head.php');
 
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
             // Cargar años disponibles
@@ -282,6 +284,16 @@ include('head.php');
                     const mesSelect = $('#mes');
                     mesSelect.empty();
                     mesSelect.append(new Option('Seleccione un mes', '')); // Añadir opción por defecto
+
+                    // Ordenar los meses en orden cronológico
+                    const ordenMeses = [
+                        'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+                        'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+                    ];
+
+                    meses.sort((a, b) => ordenMeses.indexOf(a.mes) - ordenMeses.indexOf(b.mes));
+
+                    // Agregar meses ordenados al <select>
                     meses.forEach(mes => {
                         mesSelect.append(new Option(mes.mes, mes.mes));
                     });
@@ -323,6 +335,7 @@ include('head.php');
             }
         });
     </script>
+
 </body>
 
 </html>
