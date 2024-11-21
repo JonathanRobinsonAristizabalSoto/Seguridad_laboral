@@ -198,7 +198,7 @@ include('head.php');
                     <label for="casos_covid_positivos" class="font-semibold text-azul flex items-center">
                         <i class="fas fa-virus text-rojo mr-2"></i> Casos Covid Positivos
                     </label>
-                    <input type="number" name="casos_covid_positivos" id="casos_covid_positivos" class="p-2 border border-gray-300 rounded-md" placeholder="Ingrese la cantidad" value="<?php echo isset($datos['casos_covid_positivos']) ? $datos['casos_covid_positivos'] : ''; ?>" required>
+                    <input type="number" name="casos_covid_positivos" id="casos_covid_positivos" class="p-2 border border-gray-300 rounded-md" placeholder="Ingrese la cantidad" required>
                 </div>
 
                 <!-- Campo: Inspecciones Programadas -->
