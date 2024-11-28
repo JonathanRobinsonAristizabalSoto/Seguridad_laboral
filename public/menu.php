@@ -24,10 +24,10 @@
 
 <!-- Sidebar (menú lateral) -->
 <div id="sidebar" class="fixed inset-0 bg-color5 bg-opacity-75 z-50 hidden">
-    <div class="w-64 bg-color2 h-full p-6 transform -translate-x-full transition-transform duration-500 ease-in-out" id="sidebar-content">
+    <div class="w-64 bg-color1 h-full p-6 transform -translate-x-full transition-transform duration-500 ease-in-out" id="sidebar-content">
         <div class="flex justify-between items-center mb-8">
         <div class="flex items-center">
-                <img src="./assets/img/logo.png" alt="Logo" class="h-8 w-8 mr-2">
+                <img src="./assets/img/logo-naranja.svg" alt="Logo" class="h-8 w-8 mr-2">
                 <span class="text-xl font-heading font-bold text-color3">Menú</span>
             </div>
             <!-- Ícono para cerrar el sidebar -->
@@ -38,22 +38,22 @@
         <ul>
             <li>
                 <a href="/home.php" class="text-lg font-medium text-color3 hover:text-color5 mb-4 block font-sans">
-                    <i class="fas fa-home text-color5 mr-2"></i>Inicio
+                    <i class="fas fa-home text-color2 mr-2"></i>Inicio
                 </a>
             </li>
             <li>
                 <a href="/formulario.php" class="text-lg font-medium text-color3 hover:text-color5 mb-4 block font-sans">
-                    <i class="fas fa-plus-circle text-color5 mr-2"></i>Crear nuevo mes de indicadores
+                    <i class="fas fa-plus-circle text-color2 mr-2"></i>Crear nuevo mes de indicadores
                 </a>
             </li>
             <li>
                 <a href="/formularioActualizar.php" class="text-lg font-medium text-color3 hover:text-color5 mb-4 block font-sans">
-                    <i class="fas fa-edit text-color5 mr-2"></i>Actualizar Indicadores
+                    <i class="fas fa-edit text-color2 mr-2"></i>Actualizar Indicadores
                 </a>
             </li>
             <li>
                 <a href="/dashboard.php" class="text-lg font-medium text-color3 hover:text-color5 mb-4 block font-sans">
-                    <i class="fas fa-tachometer-alt text-color5 mr-2"></i>Dashboard
+                    <i class="fas fa-tachometer-alt text-color2 mr-2"></i>Dashboard
                 </a>
             </li>
         </ul>
