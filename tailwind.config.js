@@ -9,8 +9,8 @@ module.exports = {
     extend: {
       // Definición de la paleta de colores personalizada
       colors: {
-        'color1': '#6dad23',         // Azul principal
-        'color2': '#f86a1e',         // Rojo principal
+        'color1': '#6dad23',         // verde principal
+        'color2': '#f86a1e',         // naranja principal
         'color3': '#ffffff',         // Blanco
         'color4': '#c9d0c5',         // Gris claro
         'color5': '#494c49',         // Gris oscuro
