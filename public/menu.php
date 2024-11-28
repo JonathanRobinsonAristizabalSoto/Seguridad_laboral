@@ -26,7 +26,10 @@
 <div id="sidebar" class="fixed inset-0 bg-color5 bg-opacity-75 z-50 hidden">
     <div class="w-64 bg-color2 h-full p-6 transform -translate-x-full transition-transform duration-500 ease-in-out" id="sidebar-content">
         <div class="flex justify-between items-center mb-8">
-            <span class="text-xl font-heading font-bold text-color3">Menú</span>
+        <div class="flex items-center">
+                <img src="./assets/img/logo.png" alt="Logo" class="h-8 w-8 mr-2">
+                <span class="text-xl font-heading font-bold text-color3">Menú</span>
+            </div>
             <!-- Ícono para cerrar el sidebar -->
             <button id="close-sidebar" class="text-color3 text-2xl focus:outline-none">
                 <i class="fas fa-times"></i>
