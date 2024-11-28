@@ -502,8 +502,8 @@ date_default_timezone_set('America/Bogota');
             datasets: [{
                 label: 'Cantidad de Trabajadores',
                 data: <?php echo json_encode($cant_trabajadores); ?>,
-                backgroundColor: '#374237', // Usando color4
-                borderColor: '#374237',
+                backgroundColor: '#73b32c', // Usando color4
+                borderColor: '#73b32c',
                 borderWidth: 1
             }]
         },
