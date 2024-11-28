@@ -9,12 +9,12 @@ module.exports = {
     extend: {
       // Definición de la paleta de colores personalizada
       colors: {
-        'azul': '#043473',         // Azul principal
-        'rojo': '#ef4444',         // Rojo principal
-        'blanco': '#ffffff',       // Blanco
-        'gris-claro': '#d1d5db',   // Gris claro
-        'gris-oscuro': '#374151',  // Gris oscuro
-        'negro': '#000A09',        // Tonalidad de negro
+        'color1': '#6dad23',         // Azul principal
+        'color2': '#f86a1e',         // Rojo principal
+        'color3': '#ffffff',         // Blanco
+        'color4': '#c9d0c5',         // Gris claro
+        'color5': '#494c49',         // Gris oscuro
+        'color6': '#222322',         // Tonalidad de negro
       },
       // Variables de tamaños
       spacing: {
